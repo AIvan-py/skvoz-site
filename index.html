@@ -17,6 +17,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="assets/brand/skvoz-mark-compact.png">
   <link rel="stylesheet" href="assets/css/site.css">
+  <script src="assets/js/contact-form.js" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -232,16 +233,17 @@
         </div>
 
         <form class="request-form"
-              action="https://formsubmit.co/info@skvoz.tech"
+              id="request-form"
+              action="https://api.web3forms.com/submit"
               method="POST"
               accept-charset="UTF-8">
-          <input type="hidden" name="_subject" value="Новый запрос с сайта СКВОЗЬ">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_next" value="https://skvoz.tech/thanks.html">
-          <input type="hidden" name="_url" value="https://skvoz.tech/#contacts">
+          <input type="hidden" name="access_key" value="372d94bf-a029-45cb-b26a-bb0760a7f8ac">
+          <input type="hidden" name="subject" value="Новый запрос с сайта СКВОЗЬ">
+          <input type="hidden" name="from_name" value="Сайт СКВОЗЬ">
+          <input type="hidden" name="redirect" value="https://skvoz.tech/thanks.html">
           <label class="form-honeypot" aria-hidden="true">
             Не заполняйте это поле
-            <input type="text" name="_honey" tabindex="-1" autocomplete="off">
+            <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off">
           </label>
 
           <label class="form-field">
@@ -267,7 +269,7 @@
 
           <label class="form-field">
             <span>Текст запроса</span>
-            <textarea name="Текст запроса"
+            <textarea name="message"
                       rows="6"
                       maxlength="4000"
                       placeholder="Что хотите автоматизировать или уточнить"
@@ -275,7 +277,7 @@
           </label>
 
           <label class="consent-check">
-            <input type="checkbox" required>
+            <input type="checkbox" name="Согласие на обработку данных" value="Да" required>
             <span>Согласен с <a href="privacy.html">политикой обработки данных</a>.</span>
           </label>
 
@@ -283,6 +285,7 @@
             <button class="button button-primary" type="submit">Отправить запрос</button>
             <p>Ответ направим на указанную электронную почту.</p>
           </div>
+          <p class="form-status" data-form-status role="status" aria-live="polite"></p>
         </form>
       </div>
 
