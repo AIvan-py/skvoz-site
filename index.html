@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>СКВОЗЬ — автоматизация заказов на платформе ABCP</title>
+  <meta name="description" content="СКВОЗЬ получает заказы из почты, проверяет позиции, создаёт заказы в ABCP, автоматически фиксирует отказы поставщиков и отправляет уведомления клиентам. Подписка — 15 000 ₽ в месяц.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0b0c0e">
+  <link rel="canonical" href="https://skvoz.tech/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="СКВОЗЬ — от запроса до результата">
+  <meta property="og:description" content="Автоматическая обработка заказов из почты на платформе ABCP.">
+  <meta property="og:image" content="https://skvoz.tech/assets/brand/skvoz-logo-full.png">
+  <meta property="og:url" content="https://skvoz.tech/">
+  <meta property="og:locale" content="ru_RU">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" href="assets/brand/skvoz-mark-compact.png">
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand brand-full" href="#top" aria-label="СКВОЗЬ — на главную">
+      <img class="brand-logo-full"
+           src="assets/brand/skvoz-logo-full.png"
+           alt="СКВОЗЬ — End-to-End Automation. От запроса до результата">
+    </a>
+
+    <nav class="desktop-nav" aria-label="Основная навигация">
+      <a href="#process">Как работает</a>
+      <a href="#results">Результаты</a>
+      <a href="#price">Стоимость</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+
+    <a class="button button-download header-download"
+       href="downloads/skvoz-orders-2026-07.html"
+       download="СКВОЗЬ-презентация.html">
+      Скачать презентацию
+    </a>
+  </header>
+
+  <main id="top">
+    <section class="hero page-section">
+      <div class="hero-copy">
+        <div class="platform-badge"><span aria-hidden="true"></span>Работает на платформе ABCP</div>
+        <p class="eyebrow">СКВОЗЬ / ЗАКАЗЫ</p>
+        <h1>Автоматическая обработка заказов из почты на платформе ABCP</h1>
+        <p class="lead">Система получает письма клиентов с Excel-заказами, проверяет позиции, создаёт заказы в ABCP, автоматически фиксирует отказы поставщиков и отправляет уведомления клиентам.</p>
+
+        <div class="hero-offer">
+          <div class="price-brief">
+            <strong>15 000 ₽</strong>
+            <span>в месяц<br>по подписке</span>
+          </div>
+          <p>Повторяющиеся операции выполняются автоматически — без пропорционального роста штата.</p>
+        </div>
+
+        <div class="hero-actions">
+          <a class="button button-primary"
+             href="downloads/skvoz-orders-2026-07.html"
+             download="СКВОЗЬ-презентация.html">
+            Скачать презентацию
+          </a>
+          <a class="button button-quiet" href="#contacts">Обсудить подключение</a>
+        </div>
+      </div>
+
+      <div class="process-visual" aria-label="Схема автоматической обработки заказа">
+        <div class="visual-top">
+          <div class="visual-brand">
+            <img src="assets/brand/skvoz-mark-compact.png" alt="" width="48" height="48">
+            <div><strong>Заказ клиента</strong><span>обработка активна</span></div>
+          </div>
+          <span class="live-status"><i aria-hidden="true"></i>в работе</span>
+        </div>
+
+        <ol class="visual-route">
+          <li class="complete">
+            <span class="route-number">01</span>
+            <div><small>ПОЧТА И EXCEL</small><strong>Заказ получен</strong></div>
+            <em>готово</em>
+          </li>
+          <li class="complete">
+            <span class="route-number">02</span>
+            <div><small>ABCP</small><strong>Цена и срок проверены</strong></div>
+            <em>готово</em>
+          </li>
+          <li class="complete">
+            <span class="route-number">03</span>
+            <div><small>ПОСТАВЩИК</small><strong>Заказ передан</strong></div>
+            <em>готово</em>
+          </li>
+          <li class="active">
+            <span class="route-number">04</span>
+            <div><small>ОТКАЗ ПОСТАВЩИКА</small><strong>Отказ фиксируется</strong></div>
+            <em>автоматически</em>
+          </li>
+        </ol>
+
+        <div class="visual-result">
+          <span>Результат</span>
+          <strong>Клиенту отправляется письмо о полном или частичном отказе</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="results page-section" id="results" aria-labelledby="results-title">
+      <div class="section-intro compact">
+        <div>
+          <p class="eyebrow">Реальная работа</p>
+          <h2 id="results-title">Уже обрабатывает заказы</h2>
+        </div>
+        <p>Данные рабочей базы за период с 23 апреля по 14 июля 2026 года.</p>
+      </div>
+
+      <div class="result-grid">
+        <article><strong>1 019</strong><span>заявок клиентов обработано</span></article>
+        <article><strong>15 933</strong><span>товарные позиции проверены</span></article>
+        <article><strong>996</strong><span>заказов создано в ABCP</span></article>
+        <article><strong>1 636</strong><span>уведомлений о новых отказах и изменениях отправлено клиентам</span></article>
+      </div>
+    </section>
+
+    <section class="process page-section" id="process" aria-labelledby="process-title">
+      <div class="section-intro">
+        <p class="eyebrow">Коротко о процессе</p>
+        <h2 id="process-title">От письма клиента до результата — автоматически</h2>
+        <p>Одна сквозная цепочка вместо постоянного переключения между почтой, Excel, ABCP и отказами поставщиков.</p>
+      </div>
+
+      <div class="process-grid">
+        <article>
+          <span>01</span>
+          <h3>Получает заказ</h3>
+          <p>Находит письмо клиента и считывает позиции из приложенного Excel-файла.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>Проверяет позиции</h3>
+          <p>Учитывает прайс-лист, срок поставки, цену, наличие и доступные клиенту предложения.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>Создаёт заказ</h3>
+          <p>Создаёт заказ в ABCP и передаёт его поставщику установленным для него способом.</p>
+        </article>
+        <article>
+          <span>04</span>
+          <h3>Фиксирует отказ</h3>
+          <p>Автоматически регистрирует полный или частичный отказ поставщика, обновляет статус в ABCP и отправляет письмо клиенту.</p>
+        </article>
+      </div>
+
+      <div class="exception-line">
+        <strong>Если нужно решение человека</strong>
+        <p>Система останавливает заказ и показывает сотруднику причину. После уточнения обработка продолжается.</p>
+        <a href="downloads/skvoz-orders-2026-07.html"
+           download="СКВОЗЬ-презентация.html">
+          Скачать подробную презентацию <span aria-hidden="true">↓</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="price page-section" id="price" aria-labelledby="price-title">
+      <div class="price-main">
+        <p class="eyebrow">Стоимость</p>
+        <h2 id="price-title">СКВОЗЬ предоставляется по подписке</h2>
+        <div class="price-value"><strong>15 000 ₽</strong><span>/ месяц</span></div>
+        <p>Автоматическая обработка заказов из почты на платформе ABCP.</p>
+      </div>
+
+      <div class="price-details">
+        <p class="price-label">В продукте</p>
+        <ul>
+          <li>Получение писем и Excel-заказов</li>
+          <li>Проверка позиций и создание заказов в ABCP</li>
+          <li>Автоматическая фиксация полных и частичных отказов</li>
+          <li>Обновление ABCP и письма клиентам</li>
+        </ul>
+        <div class="price-actions">
+          <a class="button button-light" href="#contacts">Обсудить подключение</a>
+          <a class="text-link"
+             href="downloads/skvoz-orders-2026-07.html"
+             download="СКВОЗЬ-презентация.html">
+            Скачать презентацию <span aria-hidden="true">↓</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="presentation page-section" id="presentation" aria-labelledby="presentation-title">
+      <div class="presentation-copy">
+        <p class="eyebrow">Подробнее</p>
+        <h2 id="presentation-title">Весь процесс — в презентации</h2>
+        <p>Ручная цепочка, работа системы, реальные показатели и интерфейс ленты заказов собраны в одном файле.</p>
+        <div class="hero-actions">
+          <a class="button button-primary"
+             href="downloads/skvoz-orders-2026-07.html"
+             download="СКВОЗЬ-презентация.html">
+            Скачать презентацию
+          </a>
+          <a class="button button-quiet" href="presentation/">Смотреть онлайн</a>
+        </div>
+      </div>
+
+      <a class="presentation-preview" href="presentation/" aria-label="Открыть презентацию онлайн">
+        <div class="preview-bar"><span></span><span></span><span></span></div>
+        <div class="preview-body">
+          <img src="assets/brand/skvoz-mark-compact.png" alt="" width="84" height="84">
+          <p>СКВОЗЬ / ЗАКАЗЫ</p>
+          <strong>Больше заказов —<br>без роста штата</strong>
+          <span>Открыть презентацию <b aria-hidden="true">→</b></span>
+        </div>
+      </a>
+    </section>
+
+    <section class="contacts page-section" id="contacts" aria-labelledby="contacts-title">
+      <div class="contacts-head">
+        <div>
+          <p class="eyebrow">Подключение и контакты</p>
+          <h2 id="contacts-title">Обсудим ваш процесс заказов</h2>
+        </div>
+        <a class="contact-email" href="mailto:info@skvoz.tech">info@skvoz.tech</a>
+      </div>
+
+      <div class="request-panel">
+        <div class="request-copy">
+          <p class="eyebrow">Написать нам</p>
+          <h3>Оставьте ваш запрос</h3>
+          <p>Мы свяжемся с вами по указанной электронной почте.</p>
+        </div>
+
+        <form class="request-form"
+              action="https://formsubmit.co/info@skvoz.tech"
+              method="POST"
+              accept-charset="UTF-8">
+          <input type="hidden" name="_subject" value="Новый запрос с сайта СКВОЗЬ">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="https://skvoz.tech/thanks.html">
+          <input type="hidden" name="_url" value="https://skvoz.tech/#contacts">
+          <label class="form-honeypot" aria-hidden="true">
+            Не заполняйте это поле
+            <input type="text" name="_honey" tabindex="-1" autocomplete="off">
+          </label>
+
+          <label class="form-field">
+            <span>Организация</span>
+            <input type="text"
+                   name="Организация"
+                   autocomplete="organization"
+                   maxlength="160"
+                   placeholder="Название организации"
+                   required>
+          </label>
+
+          <label class="form-field">
+            <span>Электронная почта для связи</span>
+            <input type="email"
+                   name="email"
+                   autocomplete="email"
+                   maxlength="254"
+                   inputmode="email"
+                   placeholder="name@company.ru"
+                   required>
+          </label>
+
+          <label class="form-field">
+            <span>Текст запроса</span>
+            <textarea name="Текст запроса"
+                      rows="6"
+                      maxlength="4000"
+                      placeholder="Что хотите автоматизировать или уточнить"
+                      required></textarea>
+          </label>
+
+          <label class="consent-check">
+            <input type="checkbox" required>
+            <span>Согласен с <a href="privacy.html">политикой обработки данных</a>.</span>
+          </label>
+
+          <div class="form-actions">
+            <button class="button button-primary" type="submit">Отправить запрос</button>
+            <p>Ответ направим на указанную электронную почту.</p>
+          </div>
+        </form>
+      </div>
+
+      <div class="contact-grid">
+        <article>
+          <p class="contact-region">Для работы в России</p>
+          <h3>ИП Кузьмичева Л. А.</h3>
+          <dl>
+            <div><dt>ИНН</dt><dd>230803002779</dd></div>
+            <div><dt>ОГРНИП</dt><dd>324237500223597</dd></div>
+          </dl>
+          <a class="contact-phone" href="tel:+79615904061">+7 961 590-40-61</a>
+        </article>
+
+        <article class="international">
+          <p class="contact-region">Для компаний из Казахстана, Беларуси и Армении</p>
+          <h3>“BEST MOMENT” LLC</h3>
+          <p class="company-location">Republic of Armenia</p>
+          <dl>
+            <div><dt>Taxpayer Identification Number / TIN</dt><dd>02895906</dd></div>
+          </dl>
+          <a class="contact-phone" href="tel:+37477484364">+374 77 484364</a>
+        </article>
+      </div>
+
+      <div class="contacts-download">
+        <span>Перед разговором можно посмотреть подробную схему работы.</span>
+        <a href="downloads/skvoz-orders-2026-07.html"
+           download="СКВОЗЬ-презентация.html">
+          Скачать презентацию <span aria-hidden="true">↓</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-brand">
+      <img src="assets/brand/skvoz-mark-compact.png" alt="" width="42" height="42">
+      <div><strong>СКВОЗЬ</strong><span>End-to-End Automation · От запроса до результата</span></div>
+    </div>
+    <div class="footer-links">
+      <a href="mailto:info@skvoz.tech">info@skvoz.tech</a>
+      <a href="privacy.html">Обработка данных</a>
+      <a href="downloads/skvoz-orders-2026-07.html"
+         download="СКВОЗЬ-презентация.html">
+        Скачать презентацию
+      </a>
+    </div>
+    <p>Независимое решение, работающее с платформой ABCP.</p>
+  </footer>
+</body>
+</html>
