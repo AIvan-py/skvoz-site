@@ -20,7 +20,7 @@
   }
 
   function buildFallbackMailUrl(formData) {
-    const organization = String(formData.get("Организация") || "").trim();
+    const organization = String(formData.get("Organization") || "").trim();
     const email = String(formData.get("email") || "").trim();
     const message = String(formData.get("message") || "").trim();
     const body = [
