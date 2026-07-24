@@ -8,7 +8,7 @@
   const submitButton = form.querySelector('button[type="submit"]');
   const statusNode = form.querySelector("[data-form-status]");
   const contactEmail = "info@skvoz.tech";
-  const successUrl = "https://skvoz.tech/thanks.html";
+  const successUrl = "thanks.html";
 
   function setStatus(message, isError = false) {
     if (!statusNode) {
