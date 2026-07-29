@@ -32,7 +32,7 @@
   <div class="preview-tools" role="region" aria-label="Управление шаблоном">
     <p class="preview-label">Тема письма</p>
     <p class="preview-subject">Автозаказ для ABCP: обработка заказов и отказов поставщиков</p>
-    <p class="preview-note">Перед отправкой замените <strong>[Имя]</strong> и приложите презентацию.</p>
+    <p class="preview-note">Перед отправкой замените <strong>[Название компании]</strong> и приложите презентацию. Если официальное название не найдено, используйте домен без `https://` и `www`.</p>
     <div class="preview-actions">
       <button class="preview-button" id="copy-email" type="button">Скопировать письмо</button>
       <a class="preview-button secondary" href="../downloads/skvoz-orders-2026-07.html" download>Скачать презентацию</a>
@@ -69,7 +69,7 @@
             <tr>
               <td class="email-body" style="padding:30px 34px 8px;font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:25px;color:#22252B;">
                 <div style="display:inline-block;margin:0 0 20px;padding:6px 10px;border-radius:999px;background:#EAF0FF;color:#2458D6;font-size:11px;line-height:15px;font-weight:700;letter-spacing:.5px;">АВТОЗАКАЗ ДЛЯ ABCP</div>
-                <p style="margin:0 0 18px;">Здравствуйте, [Имя]!</p>
+                <p style="margin:0 0 18px;">Здравствуйте, команда [Название компании]!</p>
                 <p style="margin:0 0 18px;">Если ваша компания работает с заказными поставками под клиента (кросс-докингом), а заказы, поступающие по электронной почте, сотрудники вручную оформляют в ABCP, проект «Автозаказ» может быть вам полезен.</p>
                 <p style="margin:0 0 18px;">«Автозаказ» самостоятельно проверяет подключённую рабочую почту, находит новые письма клиентов, открывает приложенные Excel-файлы и обрабатывает заказ. Система проверяет позиции, цены и сроки поставки, создаёт заказ в ABCP и передаёт его поставщикам установленным способом.</p>
                 <p style="margin:0 0 18px;">После оформления система продолжает контролировать заказ: находит ответы поставщиков, фиксирует полные и частичные отказы, определяет, к какому заказу и клиенту они относятся, обновляет информацию в ABCP и автоматически уведомляет клиента.</p>
@@ -151,7 +151,7 @@
           document.execCommand('copy');
           selection.removeAllRanges();
         }
-        copyStatus.textContent = 'Письмо скопировано. Вставьте его в редактор Timeweb Mail и замените [Имя].';
+        copyStatus.textContent = 'Письмо скопировано. Вставьте его в редактор Timeweb Mail и замените [Название компании].';
       } catch (error) {
         copyStatus.textContent = 'Автоматическое копирование недоступно. Выделите бланк ниже и скопируйте его вручную.';
       }
