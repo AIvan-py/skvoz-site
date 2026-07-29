@@ -1,0 +1,20 @@
+# Local-only outreach automation, campaign data, and credentials.
+/private/
+
+# Environment files must never be committed.
+.env
+.env.*
+!.env.example
+
+# Common credential and private-key formats.
+*.pem
+*.key
+*.p12
+*.pfx
+secrets/
+
+# Local campaign artifacts and recipient lists.
+campaign-data/
+outbox/
+sent/
+
