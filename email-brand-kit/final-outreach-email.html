@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Письмо «Автозаказ» — СКВОЗЬ</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #eef1f5; color: #0b0c0e; font-family: Arial, Helvetica, sans-serif; }
+    .preview-tools { width: min(600px, calc(100% - 24px)); margin: 24px auto 14px; padding: 18px 20px; border: 1px solid #dce2eb; border-radius: 12px; background: #fff; box-shadow: 0 10px 28px rgba(25, 36, 60, .07); }
+    .preview-label { margin: 0 0 5px; color: #697182; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .preview-subject { margin: 0; font-size: 16px; font-weight: 700; line-height: 1.35; }
+    .preview-note { margin: 9px 0 0; color: #626873; font-size: 13px; line-height: 1.45; }
+    .preview-actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 15px; }
+    .preview-button { appearance: none; border: 0; border-radius: 7px; padding: 10px 14px; background: #2f6bff; color: #fff; cursor: pointer; font: 700 13px/1 Arial, Helvetica, sans-serif; }
+    .preview-button.secondary { border: 1px solid #d5dbe5; background: #fff; color: #22252b; text-decoration: none; }
+    .preview-status { min-height: 18px; margin: 10px 0 0; color: #246242; font-size: 12px; line-height: 18px; }
+    @media (max-width: 520px) {
+      .preview-tools { margin-top: 12px; }
+      .email-shell { padding: 12px 8px !important; }
+      .email-header, .email-body, .email-footer { padding-left: 22px !important; padding-right: 22px !important; }
+      .email-brand-subtitle { font-size: 11px !important; }
+    }
+    @media print {
+      .preview-tools { display: none; }
+      body { background: #fff; }
+      .email-shell { padding: 0 !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="preview-tools" role="region" aria-label="Управление шаблоном">
+    <p class="preview-label">Тема письма</p>
+    <p class="preview-subject">Автозаказ для ABCP: обработка заказов и отказов поставщиков</p>
+    <p class="preview-note">Перед отправкой замените <strong>[Имя]</strong> и приложите презентацию.</p>
+    <div class="preview-actions">
+      <button class="preview-button" id="copy-email" type="button">Скопировать письмо</button>
+      <a class="preview-button secondary" href="../downloads/skvoz-orders-2026-07.html" download>Скачать презентацию</a>
+    </div>
+    <p class="preview-status" id="copy-status" aria-live="polite"></p>
+  </div>
+
+  <div id="email-content">
+    <div style="display:none;max-height:0;overflow:hidden;opacity:0;color:transparent;">Автоматическая обработка заказов из почты в ABCP и работа с полными и частичными отказами поставщиков.</div>
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;border-collapse:collapse;background:#EEF1F5;">
+      <tr>
+        <td class="email-shell" align="center" style="padding:18px 12px 34px;">
+          <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:100%;max-width:600px;border-collapse:collapse;background:#FFFFFF;border:1px solid #E0E5ED;">
+            <tr>
+              <td style="height:5px;background:#2F6BFF;font-size:0;line-height:0;">&nbsp;</td>
+            </tr>
+            <tr>
+              <td class="email-header" style="padding:24px 34px 20px;border-bottom:1px solid #E3E7EE;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;border-collapse:collapse;">
+                  <tr>
+                    <td style="width:78px;vertical-align:middle;">
+                      <a href="https://skvoz.tech/" style="text-decoration:none;">
+                        <img src="https://skvoz.tech/email-brand-kit/skvoz-mark-email.png" width="66" alt="СКВОЗЬ" style="display:block;width:66px;height:auto;border:0;outline:none;">
+                      </a>
+                    </td>
+                    <td style="vertical-align:middle;">
+                      <div style="font-size:22px;line-height:26px;font-weight:700;letter-spacing:.4px;color:#0B0C0E;">СКВОЗЬ</div>
+                      <div class="email-brand-subtitle" style="font-size:12px;line-height:18px;color:#626873;">End-to-End Automation · От запроса до результата</div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td class="email-body" style="padding:30px 34px 8px;font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:25px;color:#22252B;">
+                <div style="display:inline-block;margin:0 0 20px;padding:6px 10px;border-radius:999px;background:#EAF0FF;color:#2458D6;font-size:11px;line-height:15px;font-weight:700;letter-spacing:.5px;">АВТОЗАКАЗ ДЛЯ ABCP</div>
+                <p style="margin:0 0 18px;">Здравствуйте, [Имя]!</p>
+                <p style="margin:0 0 18px;">Если ваша компания работает с заказными поставками под клиента (кросс-докингом), а заказы, поступающие по электронной почте, сотрудники вручную оформляют в ABCP, проект «Автозаказ» может быть вам полезен.</p>
+                <p style="margin:0 0 18px;">«Автозаказ» самостоятельно проверяет подключённую рабочую почту, находит новые письма клиентов, открывает приложенные Excel-файлы и обрабатывает заказ. Система проверяет позиции, цены и сроки поставки, создаёт заказ в ABCP и передаёт его поставщикам установленным способом.</p>
+                <p style="margin:0 0 18px;">После оформления система продолжает контролировать заказ: находит ответы поставщиков, фиксирует полные и частичные отказы, определяет, к какому заказу и клиенту они относятся, обновляет информацию в ABCP и автоматически уведомляет клиента.</p>
+                <p style="margin:0 0 18px;">Сотрудникам больше не нужно переносить типовые заказы из Excel в ABCP, искать письма с отказами и сопоставлять их с исходными заказами клиентов. Они подключаются только там, где действительно требуется решение человека.</p>
+                <p style="margin:0 0 18px;">К письму прилагаю презентацию с подробным описанием работы продукта.</p>
+                <p style="margin:0 0 24px;">Если проект вас заинтересовал, ответьте на это письмо или свяжитесь со мной по телефону. Также можем организовать онлайн-встречу, на которой я покажу систему и подробно расскажу о её возможностях.</p>
+                <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+                  <tr>
+                    <td style="border-radius:7px;background:#2F6BFF;">
+                      <a href="https://skvoz.tech/" style="display:inline-block;padding:12px 18px;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:18px;font-weight:700;color:#FFFFFF;text-decoration:none;">Посмотреть проект</a>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td class="email-footer" style="padding:28px 34px 30px;">
+                <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:100%;border-collapse:collapse;font-family:Arial,Helvetica,sans-serif;color:#0B0C0E;">
+                  <tr>
+                    <td colspan="2" style="height:3px;background:#2F6BFF;font-size:0;line-height:0;">&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td style="width:82px;padding:18px 16px 0 0;vertical-align:top;">
+                      <a href="https://skvoz.tech/" style="text-decoration:none;">
+                        <img src="https://skvoz.tech/email-brand-kit/skvoz-mark-email.png" width="72" alt="СКВОЗЬ" style="display:block;width:72px;height:auto;border:0;outline:none;">
+                      </a>
+                    </td>
+                    <td style="padding:17px 0 0;vertical-align:top;">
+                      <div style="font-size:16px;line-height:21px;font-weight:700;color:#0B0C0E;">Иван Кузьмичев</div>
+                      <div style="font-size:12px;line-height:18px;color:#626873;">СКВОЗЬ / АВТОЗАКАЗ</div>
+                      <div style="margin-top:6px;font-size:13px;line-height:20px;color:#0B0C0E;">
+                        <a href="tel:+79615904061" style="color:#0B0C0E;text-decoration:none;">+7 961 590-40-61</a><br>
+                        <a href="mailto:info@skvoz.tech" style="color:#2F6BFF;text-decoration:none;">info@skvoz.tech</a>
+                        <span style="color:#9AA8BD;">&nbsp;·&nbsp;</span>
+                        <a href="https://skvoz.tech/" style="color:#2F6BFF;text-decoration:none;">skvoz.tech</a>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <script>
+    const copyButton = document.getElementById('copy-email');
+    const copyStatus = document.getElementById('copy-status');
+    const emailContent = document.getElementById('email-content');
+
+    copyButton.addEventListener('click', async () => {
+      const html = emailContent.innerHTML.trim();
+      const text = emailContent.innerText.trim();
+
+      try {
+        if (window.ClipboardItem && navigator.clipboard && navigator.clipboard.write) {
+          const item = new ClipboardItem({
+            'text/html': new Blob([html], { type: 'text/html' }),
+            'text/plain': new Blob([text], { type: 'text/plain' })
+          });
+          await navigator.clipboard.write([item]);
+        } else {
+          const range = document.createRange();
+          range.selectNode(emailContent);
+          const selection = window.getSelection();
+          selection.removeAllRanges();
+          selection.addRange(range);
+          document.execCommand('copy');
+          selection.removeAllRanges();
+        }
+        copyStatus.textContent = 'Письмо скопировано. Вставьте его в редактор Timeweb Mail и замените [Имя].';
+      } catch (error) {
+        copyStatus.textContent = 'Автоматическое копирование недоступно. Выделите бланк ниже и скопируйте его вручную.';
+      }
+    });
+  </script>
+</body>
+</html>
