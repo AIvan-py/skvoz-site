@@ -3,338 +3,634 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>СКВОЗЬ — автоматизация заказов на платформе ABCP</title>
-  <meta name="description" content="СКВОЗЬ получает заказы из почты, проверяет позиции, создаёт заказы в ABCP, автоматически фиксирует отказы поставщиков и отправляет уведомления клиентам. Подписка — 20 000 ₽ в месяц.">
+  <title>Автоматизация заказов в ABCP — робот-менеджер СКВОЗЬ</title>
+  <meta name="description" content="Робот-менеджер по заказам для оптовых продавцов автозапчастей на ABCP: принимает заказы из почты, с сайта и по API, выбирает поставщика по цене и сроку, контролирует отказы. 20 000 ₽ в месяц.">
   <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#0b0c0e">
+  <meta name="theme-color" content="#ffffff">
   <link rel="canonical" href="https://skvoz.tech/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="СКВОЗЬ — от запроса до результата">
-  <meta property="og:description" content="Автоматическая обработка заказов из почты на платформе ABCP.">
-  <meta property="og:image" content="https://skvoz.tech/assets/brand/skvoz-logo-full.png">
+  <meta property="og:site_name" content="СКВОЗЬ">
+  <meta property="og:title" content="СКВОЗЬ — робот-менеджер по заказам для ABCP">
+  <meta property="og:description" content="Продажи под заказ без роста штата: робот сам принимает заказы, закупает товар у поставщиков по цене и сроку клиента и контролирует отказы.">
+  <meta property="og:image" content="https://skvoz.tech/assets/brand/skvoz-og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:url" content="https://skvoz.tech/">
   <meta property="og:locale" content="ru_RU">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" type="image/png" href="assets/brand/skvoz-mark-compact.png">
-  <link rel="stylesheet" href="assets/css/site.css">
+  <link rel="icon" type="image/png" href="assets/brand/skvoz-mark-192.png">
+  <link rel="apple-touch-icon" href="assets/brand/skvoz-mark-192.png">
+  <link rel="stylesheet" href="assets/css/main.css">
   <script src="assets/js/contact-form.js" defer></script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://skvoz.tech/#org",
+      "name": "СКВОЗЬ",
+      "url": "https://skvoz.tech/",
+      "logo": "https://skvoz.tech/assets/brand/skvoz-mark-192.png",
+      "email": "info@skvoz.tech",
+      "telephone": "+7-961-590-40-61"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://skvoz.tech/#site",
+      "url": "https://skvoz.tech/",
+      "name": "СКВОЗЬ",
+      "inLanguage": "ru",
+      "publisher": {
+        "@id": "https://skvoz.tech/#org"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://skvoz.tech/#app",
+      "name": "СКВОЗЬ",
+      "alternateName": "СКВОЗЬ — робот-менеджер по заказам для ABCP",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "url": "https://skvoz.tech/",
+      "description": "Автоматизация заказов в ABCP для оптовых продавцов автозапчастей: приём заказов из почты, с сайта и по API, выбор поставщика по цене и сроку, создание заказа, контроль отказов поставщиков.",
+      "offers": {
+        "@type": "Offer",
+        "price": "20000",
+        "priceCurrency": "RUB",
+        "description": "Подписка, в месяц"
+      },
+      "publisher": {
+        "@id": "https://skvoz.tech/#org"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://skvoz.tech/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Что такое ABCP и подойдёт ли это мне?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ABCP — платформа, на которой работают интернет-магазины и оптовые продавцы автозапчастей. Если ваши заказы оформляются в ABCP и часть товара вы закупаете у поставщиков под заказ клиента — СКВОЗЬ сделан для вас."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Откуда робот берёт заказы?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Из трёх источников: письма клиентов с Excel-файлами, заказы, которые клиент оформил на вашем сайте, и заказы по API из программы клиента."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Клиентам придётся что-то менять?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Нет. Клиенты продолжают заказывать так же, как привыкли. Робот подстраивается под файл каждого клиента — это настраивается один раз."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "А если робот ошибётся?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Робот заказывает только то, что подходит по вашим правилам: по цене, сроку и наличию. Если данных не хватает — он не угадывает, а останавливает заказ и показывает сотруднику причину. Каждое его решение видно в ленте заявок."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Что будет, если поставщик потом не привезёт товар?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Робот следит за заказом и после оформления. Если поставщик отказал полностью или частично, СКВОЗЬ сам найдёт исходный заказ, обновит его в ABCP и предупредит клиента письмом."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Робот заменит моих менеджеров?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Нет. Он забирает рутину: сравнение предложений, оформление, поиск писем с отказами. Менеджеры занимаются клиентами и случаями, где нужно решение человека. Когда заказов становится больше, новых людей на обработку нанимать не нужно."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Что нужно для подключения?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Работающий ABCP. Оставьте заявку — на первом разговоре посмотрим, как у вас сейчас обрабатываются заказы, и посчитаем экономику для вашего объёма."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <header class="site-header">
-    <a class="brand brand-full" href="#top" aria-label="СКВОЗЬ — на главную">
-      <img class="brand-logo-full"
-           src="assets/brand/skvoz-logo-full.png"
-           alt="СКВОЗЬ — End-to-End Automation. От запроса до результата">
-    </a>
+    <div class="wrap">
+      <a class="brand" href="#top" aria-label="СКВОЗЬ — на главную">
+        <img src="assets/brand/skvoz-mark-192.png" alt="" width="40" height="40">
+        <span class="brand-text">
+          <strong>СКВОЗЬ</strong>
+          <span>робот-менеджер по заказам</span>
+        </span>
+      </a>
 
-    <nav class="desktop-nav" aria-label="Основная навигация">
-      <a href="#process">Как работает</a>
-      <a href="#results">Результаты</a>
-      <a href="#price">Стоимость</a>
-      <a href="#contacts">Контакты</a>
-    </nav>
+      <nav class="site-nav" aria-label="Основная навигация">
+        <a href="#how">Как работает</a>
+        <a href="#sizes">Экономика</a>
+        <a href="#price">Стоимость</a>
+        <a href="#faq">Вопросы</a>
+      </nav>
 
-    <a class="button button-download header-download"
-       href="downloads/skvoz-orders-2026-07.html"
-       download="СКВОЗЬ-презентация.html">
-      Скачать презентацию
-    </a>
+      <a class="button button-primary button-small" href="#request">Оставить заявку</a>
+    </div>
   </header>
 
   <main id="top">
-    <section class="hero page-section">
-      <div class="hero-copy">
-        <div class="platform-badge"><span aria-hidden="true"></span>Работает на платформе ABCP</div>
-        <p class="eyebrow">СКВОЗЬ / ЗАКАЗЫ</p>
-        <h1>Автоматическая обработка заказов из почты на платформе ABCP</h1>
-        <p class="lead">Система получает письма клиентов с Excel-заказами, проверяет позиции, создаёт заказы в ABCP, автоматически фиксирует отказы поставщиков и отправляет уведомления клиентам.</p>
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-copy">
+          <h1><span class="audience">Автоматизация заказов в ABCP для оптовых продавцов автозапчастей</span>Продажи под заказ: оборот растёт, штат — нет</h1>
+          <p class="lead"><strong>СКВОЗЬ — робот-менеджер по заказам.</strong> Сам принимает заказ из почты, с сайта или по API, закупает товар у поставщиков по цене и сроку клиента и следит за исполнением. Без участия сотрудника, днём, ночью и в выходные.</p>
 
-        <div class="hero-offer">
-          <div class="price-brief">
-            <strong>20 000 ₽</strong>
-            <span>в месяц<br>по подписке</span>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#request">Оставить заявку</a>
+            <a class="button button-quiet" href="#how">Как это работает</a>
           </div>
-          <p>Повторяющиеся операции выполняются автоматически — без пропорционального роста штата.</p>
+
+          <ul class="hero-facts">
+            <li><strong>3 входа</strong>почта, сайт, API</li>
+            <li><strong>Минуты</strong>от заказа до ответа клиенту</li>
+            <li><strong>20 000 ₽</strong>в месяц</li>
+          </ul>
         </div>
 
-        <div class="hero-actions">
-          <a class="button button-primary"
-             href="downloads/skvoz-orders-2026-07.html"
-             download="СКВОЗЬ-презентация.html">
-            Скачать презентацию
-          </a>
-          <a class="button button-quiet" href="#contacts">Обсудить подключение</a>
+        <div class="journey" aria-label="Пример: путь одного заказа">
+          <p class="journey-title">Путь одного заказа</p>
+
+          <div class="j-card">
+            <div class="j-head"><span>Заказ от клиента</span><span class="j-time">09:12</span></div>
+            <strong>«Добрый день, заказ во вложении»</strong>
+            <span class="j-file"><b>XLS</b> Заказ.xlsx · 3 строки</span>
+          </div>
+
+          <p class="j-link">СКВОЗЬ сравнивает предложения поставщиков: наличие, цена, срок</p>
+
+          <div class="j-card">
+            <div class="j-head"><span>Товар заказан у поставщиков</span><span class="j-time">09:16</span></div>
+            <ul class="j-rows">
+              <li>Фильтр масляный MANN, 1 шт <span class="pill pill-ok">Заказано</span></li>
+              <li>Свеча зажигания BOSCH, 4 шт <span class="pill pill-ok">Заказано</span></li>
+              <li>Ремень DAYCO, 2 шт <span class="pill pill-no">Не заказано</span>
+                <small>Цена у поставщиков выше, чем указал клиент</small></li>
+            </ul>
+          </div>
+
+          <p class="j-link">СКВОЗЬ сам пишет клиенту</p>
+
+          <div class="j-card j-reply">
+            <div class="j-head"><span>Ответ клиенту отправлен</span><span class="j-time">09:17</span></div>
+            <p>Две позиции заказаны. По третьей — причина, почему не заказана.</p>
+          </div>
+
+          <p class="journey-note">Пример условный. Сотрудник в этой цепочке не участвовал.</p>
         </div>
       </div>
+    </section>
 
-      <div class="process-visual" aria-label="Схема автоматической обработки заказа">
-        <div class="visual-top">
-          <div class="visual-brand">
-            <img src="assets/brand/skvoz-mark-compact.png" alt="" width="48" height="48">
-            <div><strong>Заказ клиента</strong><span>обработка активна</span></div>
-          </div>
-          <span class="live-status"><i aria-hidden="true"></i>в работе</span>
+    <section class="section section-tinted" aria-labelledby="why-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Зачем это нужно</p>
+          <h2 id="why-title">При наценке 7–9 % зарабатывает только объём. А объём — это ручная работа</h2>
+          <p>Вы продаёте не только со склада, но и под заказ: товара нет — быстро покупаете его у поставщика и перепродаёте клиенту. Это продажа под заказ, или кросс-докинг. Каждый такой заказ кто-то должен обработать руками.</p>
         </div>
 
-        <ol class="visual-route">
-          <li class="complete">
-            <span class="route-number">01</span>
-            <div><small>ПОЧТА И EXCEL</small><strong>Заказ получен</strong></div>
-            <em>готово</em>
+        <div class="order-sizes" aria-label="Сколько времени занимает ввод одного заказа вручную">
+          <article>
+            <h3>Небольшой заказ</h3>
+            <p class="order-lines">10 строк</p>
+            <p class="order-time">10 минут</p>
+          </article>
+          <article>
+            <h3>Средний заказ</h3>
+            <p class="order-lines">50 строк</p>
+            <p class="order-time">25 минут</p>
+          </article>
+          <article>
+            <h3>Большой заказ</h3>
+            <p class="order-lines">150 строк</p>
+            <p class="order-time">около часа</p>
+          </article>
+        </div>
+
+        <div class="risks">
+          <article class="risk-refusal">
+            <h3>Плюс каждый отказ поставщика — от 10 минут</h3>
+            <p>Найти письмо, найти исходный заказ, исправить его в ABCP, написать клиенту. А письмо с отказом можно и пропустить — тогда клиент ждёт товар, которого не будет.</p>
+          </article>
+          <article class="risk-error">
+            <h3>Чем больше заказ — тем легче ошибиться</h3>
+            <p>Заказать дороже, чем продали, или перепутать количество. При наценке 7–9 % одна такая ошибка — и наценки с позиции нет.</p>
+          </article>
+        </div>
+
+        <div class="compare">
+          <article class="compare-before">
+            <h3>Как сейчас: менеджер</h3>
+            <ol>
+              <li>Принимает заказ: из почты, с сайта или по API</li>
+              <li>По каждой строке сравнивает десятки предложений поставщиков</li>
+              <li>Проверяет цену клиента и обещанный срок</li>
+              <li>Оформляет заказ, передаёт поставщику, отвечает клиенту</li>
+              <li>Следит за отказами поставщиков</li>
+              <li>Исправляет заказ в ABCP и снова пишет клиенту</li>
+            </ol>
+            <p class="compare-foot">Около 20 минут на заказ из 10 строк с учётом отказов. Больше заказов — больше сотрудников.</p>
+          </article>
+
+          <article class="compare-after">
+            <h3>С роботом СКВОЗЬ</h3>
+            <ul>
+              <li>Сам принимает заказы из всех трёх источников</li>
+              <li>Сам выбирает поставщика по цене, сроку и наличию</li>
+              <li>Сам создаёт заказ в ABCP и передаёт поставщику</li>
+              <li>Сам отвечает клиенту</li>
+              <li>Сам следит за отказами и предупреждает клиента</li>
+              <li>Зовёт человека, только когда нужно решение</li>
+            </ul>
+            <p class="compare-foot">Больше заказов — те же сотрудники.</p>
+          </article>
+        </div>
+
+        <p class="footnote">Время ввода — открыть Excel клиента, построчно внести заказ на портал, проверить количество и цену. Оценка для опытного менеджера: 5 минут на заказ и около 25 секунд на строку.</p>
+      </div>
+    </section>
+
+    <section class="section" id="how" aria-labelledby="how-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Как это работает</p>
+          <h2 id="how-title">Как СКВОЗЬ обрабатывает заказ в ABCP: четыре шага</h2>
+          <p>Клиентам ничего менять не нужно: они заказывают так же, как привыкли.</p>
+        </div>
+
+        <ol class="steps">
+          <li>
+            <h3>Принимает заказ</h3>
+            <p>Письмо с Excel-файлом, заказ с сайта или по API. Формат файла каждого клиента настраивается один раз.</p>
           </li>
-          <li class="complete">
-            <span class="route-number">02</span>
-            <div><small>ABCP</small><strong>Цена и срок проверены</strong></div>
-            <em>готово</em>
+          <li>
+            <h3>Выбирает поставщика</h3>
+            <p>По каждой строке получает из ABCP все предложения и проверяет их по вашим правилам.</p>
           </li>
-          <li class="complete">
-            <span class="route-number">03</span>
-            <div><small>ПОСТАВЩИК</small><strong>Заказ передан</strong></div>
-            <em>готово</em>
+          <li>
+            <h3>Заказывает и отвечает</h3>
+            <p>Создаёт заказ в ABCP, передаёт его поставщику и пишет клиенту, что заказано, а что нет и почему.</p>
           </li>
-          <li class="active">
-            <span class="route-number">04</span>
-            <div><small>ОТКАЗ ПОСТАВЩИКА</small><strong>Отказ фиксируется</strong></div>
-            <em>автоматически</em>
+          <li>
+            <h3>Следит за исполнением</h3>
+            <p>Поставщик отказал полностью или частично — робот исправит заказ в ABCP и предупредит клиента. Один раз, без дублей.</p>
           </li>
         </ol>
 
-        <div class="visual-result">
-          <span>Результат</span>
-          <strong>Клиенту отправляется письмо о полном или частичном отказе</strong>
-        </div>
-      </div>
-    </section>
-
-    <section class="results page-section" id="results" aria-labelledby="results-title">
-      <div class="section-intro compact">
-        <div>
-          <p class="eyebrow">Реальная работа</p>
-          <h2 id="results-title">Уже обрабатывает заказы</h2>
-        </div>
-        <p>Данные рабочей базы за период с 23 апреля по 14 июля 2026 года.</p>
-      </div>
-
-      <div class="result-grid">
-        <article><strong>1 019</strong><span>заявок клиентов обработано</span></article>
-        <article><strong>15 933</strong><span>товарные позиции проверены</span></article>
-        <article><strong>996</strong><span>заказов создано в ABCP</span></article>
-        <article><strong>1 636</strong><span>уведомлений о новых отказах и изменениях отправлено клиентам</span></article>
-      </div>
-    </section>
-
-    <section class="process page-section" id="process" aria-labelledby="process-title">
-      <div class="section-intro">
-        <p class="eyebrow">Коротко о процессе</p>
-        <h2 id="process-title">От письма клиента до результата — автоматически</h2>
-        <p>Одна сквозная цепочка вместо постоянного переключения между почтой, Excel, ABCP и отказами поставщиков.</p>
-      </div>
-
-      <div class="process-grid">
-        <article>
-          <span>01</span>
-          <h3>Получает заказ</h3>
-          <p>Находит письмо клиента и считывает позиции из приложенного Excel-файла.</p>
-        </article>
-        <article>
-          <span>02</span>
-          <h3>Проверяет позиции</h3>
-          <p>Учитывает прайс-лист, срок поставки, цену, наличие и доступные клиенту предложения.</p>
-        </article>
-        <article>
-          <span>03</span>
-          <h3>Создаёт заказ</h3>
-          <p>Создаёт заказ в ABCP и передаёт его поставщику установленным для него способом.</p>
-        </article>
-        <article>
-          <span>04</span>
-          <h3>Фиксирует отказ</h3>
-          <p>Автоматически регистрирует полный или частичный отказ поставщика, обновляет статус в ABCP и отправляет письмо клиенту.</p>
-        </article>
-      </div>
-
-      <div class="exception-line">
-        <strong>Если нужно решение человека</strong>
-        <p>Система останавливает заказ и показывает сотруднику причину. После уточнения обработка продолжается.</p>
-        <a href="downloads/skvoz-orders-2026-07.html"
-           download="СКВОЗЬ-презентация.html">
-          Скачать подробную презентацию <span aria-hidden="true">↓</span>
-        </a>
-      </div>
-    </section>
-
-    <section class="price page-section" id="price" aria-labelledby="price-title">
-      <div class="price-main">
-        <p class="eyebrow">Стоимость</p>
-        <h2 id="price-title">СКВОЗЬ предоставляется по подписке</h2>
-        <div class="price-value"><strong>20 000 ₽</strong><span>/ месяц</span></div>
-        <p>Автоматическая обработка заказов из почты на платформе ABCP.</p>
-      </div>
-
-      <div class="price-details">
-        <p class="price-label">В продукте</p>
-        <ul>
-          <li>Получение писем и Excel-заказов</li>
-          <li>Проверка позиций и создание заказов в ABCP</li>
-          <li>Автоматическая фиксация полных и частичных отказов</li>
-          <li>Обновление ABCP и письма клиентам</li>
+        <h3 class="subhead">Как робот решает, у кого купить</h3>
+        <p>Предложение поставщика должно пройти все проверки. Из прошедших робот берёт самое выгодное.</p>
+        <ul class="rules">
+          <li><b>Есть в наличии</b><span>в нужном количестве</span></li>
+          <li><b>Не дороже цены клиента</b><span>с допуском, который задаёте вы</span></li>
+          <li><b>Успевает к обещанному сроку</b><span>с учётом графика поставщика</span></li>
+          <li><b>Цена не подозрительно низкая</b><span>защита от ошибки в прайсе</span></li>
+          <li><b>Свой склад — в первую очередь</b><span>если вы так настроили</span></li>
+          <li><b>Один остаток — одному клиенту</b><span>робот ведёт свой резерв</span></li>
         </ul>
-        <div class="price-actions">
-          <a class="button button-light" href="#contacts">Обсудить подключение</a>
-          <a class="text-link"
-             href="downloads/skvoz-orders-2026-07.html"
-             download="СКВОЗЬ-презентация.html">
-            Скачать презентацию <span aria-hidden="true">↓</span>
-          </a>
-        </div>
-      </div>
-    </section>
 
-    <section class="presentation page-section" id="presentation" aria-labelledby="presentation-title">
-      <div class="presentation-copy">
-        <p class="eyebrow">Подробнее</p>
-        <h2 id="presentation-title">Весь процесс — в презентации</h2>
-        <p>Ручная цепочка, работа системы, реальные показатели и интерфейс ленты заказов собраны в одном файле.</p>
-        <div class="hero-actions">
-          <a class="button button-primary"
-             href="downloads/skvoz-orders-2026-07.html"
-             download="СКВОЗЬ-презентация.html">
-            Скачать презентацию
-          </a>
-          <a class="button button-quiet" href="presentation/">Смотреть онлайн</a>
-        </div>
-      </div>
-
-      <a class="presentation-preview" href="presentation/" aria-label="Открыть презентацию онлайн">
-        <div class="preview-bar"><span></span><span></span><span></span></div>
-        <div class="preview-body">
-          <img src="assets/brand/skvoz-mark-compact.png" alt="" width="84" height="84">
-          <p>СКВОЗЬ / ЗАКАЗЫ</p>
-          <strong>Больше заказов —<br>без роста штата</strong>
-          <span>Открыть презентацию <b aria-hidden="true">→</b></span>
-        </div>
-      </a>
-    </section>
-
-    <section class="contacts page-section" id="contacts" aria-labelledby="contacts-title">
-      <div class="contacts-head">
-        <div>
-          <p class="eyebrow">Подключение и контакты</p>
-          <h2 id="contacts-title">Обсудим ваш процесс заказов</h2>
-        </div>
-        <a class="contact-email" href="mailto:info@skvoz.tech">info@skvoz.tech</a>
-      </div>
-
-      <div class="request-panel">
-        <div class="request-copy">
-          <p class="eyebrow">Написать нам</p>
-          <h3>Оставьте ваш запрос</h3>
-          <p>Мы свяжемся с вами по указанной электронной почте.</p>
-        </div>
-
-        <form class="request-form"
-              id="request-form"
-              action="https://api.web3forms.com/submit"
-              method="POST"
-              accept-charset="UTF-8">
-          <input type="hidden" name="access_key" value="372d94bf-a029-45cb-b26a-bb0760a7f8ac">
-          <input type="hidden" name="subject" value="Новый запрос с сайта СКВОЗЬ">
-          <input type="hidden" name="from_name" value="Сайт СКВОЗЬ">
-          <input type="hidden" name="redirect" value="https://skvoz.tech/thanks.html">
-          <label class="form-honeypot" aria-hidden="true">
-            Не заполняйте это поле
-            <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off">
-          </label>
-
-          <label class="form-field">
-            <span>Организация</span>
-            <input type="text"
-                   name="Organization"
-                   autocomplete="organization"
-                   maxlength="160"
-                   placeholder="Название организации"
-                   required>
-          </label>
-
-          <label class="form-field">
-            <span>Электронная почта для связи</span>
-            <input type="email"
-                   name="email"
-                   autocomplete="email"
-                   maxlength="254"
-                   inputmode="email"
-                   placeholder="name@company.ru"
-                   required>
-          </label>
-
-          <label class="form-field">
-            <span>Текст запроса</span>
-            <textarea name="message"
-                      rows="6"
-                      maxlength="4000"
-                      placeholder="Что хотите автоматизировать или уточнить"
-                      required></textarea>
-          </label>
-
-          <label class="consent-check">
-            <input type="checkbox" required>
-            <span>Согласен с <a href="privacy.html">политикой обработки данных</a>.</span>
-          </label>
-
-          <div class="form-actions">
-            <button class="button button-primary" type="submit">Отправить запрос</button>
-            <p>Ответ направим на указанную электронную почту.</p>
+        <div class="human-note">
+          <span class="human-note-icon" aria-hidden="true">!</span>
+          <div>
+            <h3>Робот работает с деньгами — поэтому не гадает</h3>
+            <p>Если данных не хватает, он останавливает заказ и показывает сотруднику причину. Сотрудник один раз даёт ответ — робот продолжает работу и запоминает его для следующих заказов. Заказ не создаётся дважды, письмо клиенту не уходит дважды.</p>
           </div>
-          <p class="form-status" data-form-status role="status" aria-live="polite"></p>
-        </form>
+        </div>
       </div>
+    </section>
 
-      <div class="contact-grid">
-        <article>
-          <p class="contact-region">Для работы в России</p>
-          <h3>ИП Кузьмичева Л. А.</h3>
-          <dl>
-            <div><dt>ИНН</dt><dd>230803002779</dd></div>
-            <div><dt>ОГРНИП</dt><dd>324237500223597</dd></div>
-          </dl>
-          <a class="contact-phone" href="tel:+79615904061">+7 961 590-40-61</a>
-        </article>
+    <section class="section section-tinted" aria-labelledby="feed-title">
+      <div class="wrap feed-layout">
+        <div>
+          <p class="eyebrow">Контроль</p>
+          <h2 id="feed-title">Всё видно на одном экране</h2>
+          <ul class="feed-points">
+            <li><strong>Статус каждого заказа</strong><span>Заказано полностью, частично или не заказано — понятно по цвету.</span></li>
+            <li><strong>Причина каждого решения</strong><span>По каждой строке видно поставщика, цену, срок и почему позиция не заказана.</span></li>
+            <li><strong>Вся история</strong><span>Отказы поставщиков и письма клиенту сохраняются в заказе.</span></li>
+          </ul>
+        </div>
 
-        <article class="international">
-          <p class="contact-region">Для компаний из Казахстана, Беларуси и Армении</p>
-          <h3>“BEST MOMENT” LLC</h3>
-          <p class="company-location">Republic of Armenia</p>
-          <dl>
-            <div><dt>Taxpayer Identification Number / TIN</dt><dd>02895906</dd></div>
-          </dl>
-          <a class="contact-phone" href="tel:+37477484364">+374 77 484364</a>
-        </article>
+        <div class="feed" aria-label="Пример ленты заявок">
+          <div class="feed-bar">Лента заявок <span>сегодня</span></div>
+          <div class="feed-row">
+            <time>09:12</time><strong>Клиент А · почта · 3 позиции</strong><span class="pill pill-part">Заказано частично</span>
+            <small>1 позиция не заказана: цена выше, чем указал клиент</small>
+          </div>
+          <div class="feed-row">
+            <time>09:05</time><strong>Клиент Б · сайт · 12 позиций</strong><span class="pill pill-ok">Заказано полностью</span>
+          </div>
+          <div class="feed-row">
+            <time>08:51</time><strong>Клиент В · почта · 7 позиций</strong><span class="pill pill-human">Нужен сотрудник</span>
+            <small>В письме не указан срок поставки — робот ждёт ответа</small>
+          </div>
+          <div class="feed-row">
+            <time>08:38</time><strong>Клиент Г · API · 5 позиций</strong><span class="pill pill-ok">Заказано полностью</span>
+            <small>Позже поставщик не смог привезти 1 позицию — клиент предупреждён</small>
+          </div>
+          <div class="feed-row">
+            <time>08:20</time><strong>Клиент Д · почта · 2 позиции</strong><span class="pill pill-no">Не заказано</span>
+            <small>Товара нет в наличии — клиенту отправлен ответ</small>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div class="contacts-download">
-        <span>Перед разговором можно посмотреть подробную схему работы.</span>
-        <a href="downloads/skvoz-orders-2026-07.html"
-           download="СКВОЗЬ-презентация.html">
-          Скачать презентацию <span aria-hidden="true">↓</span>
-        </a>
+    <section class="section" id="sizes" aria-labelledby="sizes-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Экономика</p>
+          <h2 id="sizes-title">Что это даёт компании вашего размера</h2>
+          <p>Сколько стоит обработка заказов в месяц: люди и робот. Расчёт для заказов по 10 строк.</p>
+        </div>
+
+        <div class="sizes">
+          <article>
+            <div>
+              <h3>Небольшая компания</h3>
+              <p class="size-note">около 500 заказов в месяц · 5 000 строк</p>
+            </div>
+            <ul class="checklist">
+              <li>Запустить продажи под заказ, не нанимая людей</li>
+              <li>Отказы поставщиков не теряются в почте</li>
+              <li>Окупается от пяти заказов в день</li>
+            </ul>
+            <div class="cost">
+              <div class="cost-people">Люди: 1 сотрудник<b>≈ 90 000 ₽</b></div>
+              <div>СКВОЗЬ<b>20 000 ₽</b></div>
+              <div class="cost-save">Разница в месяц<b>≈ 70 000 ₽</b></div>
+            </div>
+          </article>
+
+          <article>
+            <div>
+              <h3>Средняя компания</h3>
+              <p class="size-note">около 2 500 заказов в месяц · 25 000 строк</p>
+            </div>
+            <ul class="checklist">
+              <li>Расти в разы без набора менеджеров</li>
+              <li>Менеджеры продают, а не переносят строки из Excel</li>
+              <li>Клиент получает ответ за минуты, а не к вечеру</li>
+            </ul>
+            <div class="cost">
+              <div class="cost-people">Люди: 5 сотрудников<b>≈ 450 000 ₽</b></div>
+              <div>СКВОЗЬ<b>20 000 ₽</b></div>
+              <div class="cost-save">Разница в месяц<b>≈ 430 000 ₽</b></div>
+            </div>
+          </article>
+
+          <article>
+            <div>
+              <h3>Крупная компания</h3>
+              <p class="size-note">от 5 000 заказов в месяц · 50 000 строк</p>
+            </div>
+            <ul class="checklist">
+              <li>Около 900 тысяч рублей в месяц экономии на обработке</li>
+              <li>Одни правила для всех заказов — без ошибок в цене и количестве</li>
+              <li>Заказы не ждут утра и понедельника</li>
+            </ul>
+            <div class="cost">
+              <div class="cost-people">Люди: 10 сотрудников<b>≈ 900 000 ₽</b></div>
+              <div>СКВОЗЬ<b>20 000 ₽</b></div>
+              <div class="cost-save">Разница в месяц<b>≈ 880 000 ₽</b></div>
+            </div>
+          </article>
+        </div>
+
+        <p class="footnote">Расчёт для заказов по 10 строк: 10 минут на ввод заказа и в среднем один отказ поставщика на заказ — ещё 10 минут; 165 рабочих часов сотрудника в месяц, 90 000 ₽ в месяц с налогами. Потери от ошибок и пропущенных отказов в расчёт не входят. Сотрудники остаются нужны для нестандартных случаев, но их число не растёт вместе с заказами.</p>
+      </div>
+    </section>
+
+    <section class="section section-tinted" id="results" aria-labelledby="results-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Проверено на практике</p>
+          <h2 id="results-title">Не теория: робот уже работает. Данные одной компании</h2>
+          <p>Одна оптовая компания, 23 апреля — 1 октября 2026 года. Цифры взяты из её рабочей системы.</p>
+        </div>
+
+        <div class="proof">
+          <div class="proof-case">
+            <strong>×3</strong>
+            <h3>Оборот этой компании вырос в три раза — без единого нового сотрудника</h3>
+            <p>Заказов стало больше, а штат остался прежним: рутину забрал робот.</p>
+          </div>
+          <div class="numbers">
+            <article><strong>2 997</strong><span>заявок из почты обработано</span></article>
+            <article><strong>27 090</strong><span>строк заказов подобрано</span></article>
+            <article><strong>524 479</strong><span>предложений поставщиков проверено</span></article>
+            <article><strong>5 962</strong><span>письма поставщиков разобрано</span></article>
+            <article><strong>3 411</strong><span>писем клиентам об изменениях</span></article>
+            <article><strong>460</strong><span>заказов с сайта и по API сопровождено</span></article>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section" id="price" aria-labelledby="price-title">
+      <div class="wrap">
+        <div class="price-card">
+          <div>
+            <p class="eyebrow">Стоимость</p>
+            <h2 id="price-title">Одна цена, всё включено</h2>
+            <div class="price-value"><strong>20 000 ₽</strong><span>в месяц</span></div>
+            <p>В несколько раз дешевле нового сотрудника. Не болеет, не уходит в отпуск и работает круглосуточно.</p>
+            <a class="button button-primary" href="#request">Оставить заявку</a>
+          </div>
+
+          <div>
+            <p class="price-label">Что входит</p>
+            <ul class="checklist">
+              <li>Приём заказов из почты, с сайта и по API</li>
+              <li>Выбор поставщика по каждой позиции и создание заказов в ABCP</li>
+              <li>Ответы клиентам: что заказано, а что нет и почему</li>
+              <li>Отслеживание отказов поставщиков и письма клиентам об изменениях</li>
+              <li>Лента заявок для руководителя и менеджеров</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tinted" id="faq" aria-labelledby="faq-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Частые вопросы</p>
+          <h2 id="faq-title">Коротко о главном</h2>
+        </div>
+
+        <div class="faq">
+          <details>
+            <summary>Что такое ABCP и подойдёт ли это мне?</summary>
+            <p>ABCP — платформа, на которой работают интернет-магазины и оптовые продавцы автозапчастей. Если ваши заказы оформляются в ABCP и часть товара вы закупаете у поставщиков под заказ клиента — СКВОЗЬ сделан для вас.</p>
+          </details>
+          <details>
+            <summary>Откуда робот берёт заказы?</summary>
+            <p>Из трёх источников: письма клиентов с Excel-файлами, заказы, которые клиент оформил на вашем сайте, и заказы по API из программы клиента.</p>
+          </details>
+          <details>
+            <summary>Клиентам придётся что-то менять?</summary>
+            <p>Нет. Клиенты продолжают заказывать так же, как привыкли. Робот подстраивается под файл каждого клиента — это настраивается один раз.</p>
+          </details>
+          <details>
+            <summary>А если робот ошибётся?</summary>
+            <p>Робот заказывает только то, что подходит по вашим правилам: по цене, сроку и наличию. Если данных не хватает — он не угадывает, а останавливает заказ и показывает сотруднику причину. Каждое его решение видно в ленте заявок.</p>
+          </details>
+          <details>
+            <summary>Что будет, если поставщик потом не привезёт товар?</summary>
+            <p>Робот следит за заказом и после оформления. Если поставщик отказал полностью или частично, СКВОЗЬ сам найдёт исходный заказ, обновит его в ABCP и предупредит клиента письмом.</p>
+          </details>
+          <details>
+            <summary>Робот заменит моих менеджеров?</summary>
+            <p>Нет. Он забирает рутину: сравнение предложений, оформление, поиск писем с отказами. Менеджеры занимаются клиентами и случаями, где нужно решение человека. Когда заказов становится больше, новых людей на обработку нанимать не нужно.</p>
+          </details>
+          <details>
+            <summary>Что нужно для подключения?</summary>
+            <p>Работающий ABCP. Оставьте заявку — на первом разговоре посмотрим, как у вас сейчас обрабатываются заказы, и посчитаем экономику для вашего объёма.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="request" aria-labelledby="request-title">
+      <div class="wrap">
+        <div class="request">
+          <div class="request-copy">
+            <p class="eyebrow">Заявка</p>
+            <h2 id="request-title">Покажем, как это будет работать у вас</h2>
+            <p>Оставьте заявку — это ни к чему не обязывает.</p>
+            <ol class="next-steps">
+              <li>Свяжемся с вами по почте или телефону</li>
+              <li>Разберём, как у вас сейчас обрабатываются заказы</li>
+              <li>Покажем робота и посчитаем экономику для вашего объёма</li>
+            </ol>
+            <div class="direct">
+              Или напишите и позвоните напрямую
+              <a href="mailto:info@skvoz.tech">info@skvoz.tech</a>
+              <a href="tel:+79615904061">+7 961 590-40-61</a>
+            </div>
+          </div>
+
+          <form class="request-form"
+                id="request-form"
+                action="https://api.web3forms.com/submit"
+                method="POST"
+                accept-charset="UTF-8">
+            <input type="hidden" name="access_key" value="372d94bf-a029-45cb-b26a-bb0760a7f8ac">
+            <input type="hidden" name="subject" value="Новая заявка с сайта СКВОЗЬ">
+            <input type="hidden" name="from_name" value="Сайт СКВОЗЬ">
+            <input type="hidden" name="redirect" value="https://skvoz.tech/thanks.html">
+            <label class="form-honeypot" aria-hidden="true">
+              Не заполняйте это поле
+              <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off">
+            </label>
+
+            <label class="form-field">
+              <span>Компания</span>
+              <input type="text"
+                     name="Organization"
+                     autocomplete="organization"
+                     maxlength="160"
+                     placeholder="Название компании"
+                     required>
+            </label>
+
+            <label class="form-field">
+              <span>Электронная почта</span>
+              <input type="email"
+                     name="email"
+                     autocomplete="email"
+                     maxlength="254"
+                     inputmode="email"
+                     placeholder="name@company.ru"
+                     required>
+            </label>
+
+            <label class="form-field">
+              <span>Телефон <em>— если удобнее звонок</em></span>
+              <input type="tel"
+                     name="Phone"
+                     autocomplete="tel"
+                     maxlength="32"
+                     inputmode="tel"
+                     placeholder="+7">
+            </label>
+
+            <label class="form-field">
+              <span>Комментарий <em>— необязательно</em></span>
+              <textarea name="message"
+                        rows="3"
+                        maxlength="4000"
+                        placeholder="Например: сколько заказов в месяц вы обрабатываете"></textarea>
+            </label>
+
+            <label class="consent-check">
+              <input type="checkbox" required>
+              <span>Согласен с <a href="privacy.html">политикой обработки данных</a>.</span>
+            </label>
+
+            <button class="button button-primary" type="submit">Оставить заявку</button>
+            <p class="form-status" data-form-status role="status" aria-live="polite"></p>
+          </form>
+        </div>
+
+        <div class="legal">
+          <article>
+            <p class="contact-region">Для работы в России</p>
+            <h3>ИП Кузьмичева Л. А.</h3>
+            <p>ИНН 230803002779 · ОГРНИП 324237500223597</p>
+            <a href="tel:+79615904061">+7 961 590-40-61</a>
+          </article>
+          <article>
+            <p class="contact-region">Для компаний из Казахстана, Беларуси и Армении</p>
+            <h3>“BEST MOMENT” LLC</h3>
+            <p>Republic of Armenia · TIN 02895906</p>
+            <a href="tel:+37477484364">+374 77 484364</a>
+          </article>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="footer-brand">
-      <img src="assets/brand/skvoz-mark-compact.png" alt="" width="42" height="42">
-      <div><strong>СКВОЗЬ</strong><span>End-to-End Automation · От запроса до результата</span></div>
-    </div>
-    <div class="footer-links">
-      <a href="mailto:info@skvoz.tech">info@skvoz.tech</a>
-      <a href="privacy.html">Обработка данных</a>
-      <a href="downloads/skvoz-orders-2026-07.html"
-         download="СКВОЗЬ-презентация.html">
-        Скачать презентацию
+    <div class="wrap">
+      <a class="brand" href="#top" aria-label="СКВОЗЬ — наверх">
+        <img src="assets/brand/skvoz-mark-192.png" alt="" width="40" height="40">
+        <span class="brand-text">
+          <strong>СКВОЗЬ</strong>
+          <span>робот-менеджер по заказам для ABCP</span>
+        </span>
       </a>
+      <div class="footer-links">
+        <a href="presentation/">Презентация</a>
+        <a href="privacy.html">Обработка данных</a>
+        <a href="mailto:info@skvoz.tech">info@skvoz.tech</a>
+      </div>
+      <p class="footer-disclaimer">Независимое решение, работающее с платформой ABCP.</p>
     </div>
-    <p>Независимое решение, работающее с платформой ABCP.</p>
   </footer>
 </body>
 </html>

@@ -22,10 +22,12 @@
   function buildFallbackMailUrl(formData) {
     const organization = String(formData.get("Organization") || "").trim();
     const email = String(formData.get("email") || "").trim();
+    const phone = String(formData.get("Phone") || "").trim();
     const message = String(formData.get("message") || "").trim();
     const body = [
       `Организация: ${organization || "—"}`,
       `Электронная почта: ${email || "—"}`,
+      `Телефон: ${phone || "—"}`,
       "",
       message
     ].join("\n");
